@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seinen Carrão|Cadastro</title>
+    <!-- <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css"> -->
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="shortcut icon" href="assets/icon/logo 1 (1).svg">
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-login">
+        <div class="img-box">
+            <img src="https://a1.cdn.japantravel.com/photo/poi-99-214132/720x720!/okinawa-shuri-castle-214132.jpg"
+                alt="">
+        </div>
+        <a class="sair" href="index.html"><i class="fa-solid fa-person-walking-arrow-right"></i></a>
+        <div class="content-box">
+            <div class="form-box">
+                <h2>Cadastro</h2>
+                <form>
+                    <div class="input-box">
+                        <span>Nome:</span>
+                        <input type="text" placeholder="Digite seu nome" id="nome_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Email:</span>
+                        <input type="text" placeholder="Digite seu email" id="email_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Data de nascimento:</span>
+                        <input type="date" id="data_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Cargo:</span><br>
+                        <select id="sel_cargo">
+                            <option>Selecione um cargo</option>
+                            <option value="Membro">Membro</option>
+                            <option value="Diretoria">Diretoria</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span>CPF:</span>
+                        <input placeholder="Digite seu CPF" id="cpf_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Celular:</span>
+                        <input placeholder="Digite seu número do celular" id="cel_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Senha:</span>
+                        <input type="password" placeholder="Digite sua senha" id="senha_input">
+                    </div>
+                    <div class="input-box">
+                        <input class="iptCadastro" value="Cadastrar" onclick="cadastrar()">
+                    </div>
+                    <div class="remember">
+                        <a href="login.html">Já tem uma conta?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var dtVar = data_input.value;
+        var cargoVar = sel_cargo.value;
+        var cpfVar = cpf_input.value;
+        var celVar = cel_input.value;
+        var senhaVar = senha_input.value;
+
+        if (nomeVar == "" || emailVar == "" || dtVar == "" || cargoVar == "" || cpfVar == "" || celVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
+            alert("Preencha todos os campos para prosseguir!");
+
+            // finalizarAguardar();
+            return false;
+        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            // cardErro.style.display = "block"
+            alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            // finalizarAguardar();
+            return false;
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                dtServer: dtVar,
+                cargoServer: cargoVar,
+                cpfServer: cpfVar,
+                celServer: celVar,
+                senhaServer: senhaVar,
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+            
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+            window.alert("Cadastro realizado com sucesso!");
+                    window.location = "/login.html";
+            } else {
+                alert("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+</script>

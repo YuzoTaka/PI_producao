@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/funcoes.js"></script>
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="index.css">
+  <title>Seinen Carrão | Perfil</title>
+
+</head>
+
+<body onload="validarSessao()">
+  <main class="main">
+    <aside class="sidebar">
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li class="active"><a href="#">Perfil</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="mural.html">Mural de aviso</a></li>
+          <li><a href="../login.html">Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </main>
+  <div class="container">
+    <div class="right">
+      <div class="carteira">
+        <div class="cardLeft">
+          <div class="imgCard">
+            <img class="logo" src="../assets/icon/logo 1 (1).svg" alt="">
+            <img class="textoCard" src="../assets/icon/texto.svg" alt="">
+          </div>
+          <img class="cardPerfil" src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="">
+        </div>
+        <div class="cardRight">
+          <div class="dados">
+            <br>
+            <img class="aovcCard" src="../assets/icon/AOVC.svg" alt=""><br><br>
+            ID: <span class="cardSpan" id="b_id">ID</span><br>
+            Nome: <span class="cardSpan" id="b_usuario">membro</span><br>
+            Data de Nascimento: <span class="cardSpan" id="b_data">data</span><br>
+            Cargo: <span class="cardSpan" id="b_cargo">Cargo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
+<script>
+  var id = sessionStorage.ID_USUARIO;
+  var nome = sessionStorage.NOME_USUARIO;
+  var data = sessionStorage.DATA_USUARIO;
+  var cargo = sessionStorage.CARGO_USUARIO;
+
+  b_id.innerHTML = id;
+  b_usuario.innerHTML = nome;
+  b_data.innerHTML = data;
+  b_cargo.innerHTML = cargo;
+
+</script>

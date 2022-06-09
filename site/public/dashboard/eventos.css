@@ -1,0 +1,48 @@
+.container{
+    /* border: 5px solid black; */
+    margin-left: 372px;
+    height: 98.5vh;
+    display: flex;
+}
+.left, .right{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    border-right: 3px solid #e0e0e0;
+    justify-content: center;
+}
+
+input, select{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-weight: 400;
+    border: none;
+    font-size: 17px;
+    color: #32324f;
+    background-color: #ecf2f7;
+    border-radius: 5px;
+    margin: 5px 0 10px;
+}
+
+.nomeInput{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 5px 0 10px;
+}
+
+button {
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    background: #e8e8e8;
+    cursor: pointer;
+    border: unset;
+    font-weight: 1000;
+    margin-top: 20px;
+}
+
+select{
+    margin-top: 10px;
+}

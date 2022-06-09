@@ -1,0 +1,53 @@
+.container{
+    /* border: 5px solid black; */
+    margin-left: 372px;
+    height: 100vh;
+}
+
+.cards {
+    display: flex;
+    height: 350px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+  }
+  
+  .card {
+    margin: 2%;
+    width: 350px;
+    height: 180px;
+    justify-content: right;
+    border: 2px solid black;
+    padding: 30px;
+    font-size: 17px;
+    color: black;
+    text-align: center;
+  }
+  
+  .card p {
+    /* margin-top: 50px; */
+    /* margin-left: 200px; */
+    font-size: 70px;
+    font-weight: 600;
+    /* text-align: left; */
+  }
+  
+  /* .cards h1 {
+    font-size: 22px;
+    width: 100%;
+    border-bottom: solid white 1px;
+    text-align: left;
+    font-weight: lighter;
+    margin: 20px;
+  } */
+
+  .graph {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    width: 40%;
+    margin: auto;
+    padding-top: 10px;
+    /* margin-bottom: 40px; */
+  }

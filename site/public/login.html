@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seinen Carrão | Login</title>
+    <!-- <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css"> -->
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="assets/icon/logo 1 (1).svg">
+    <script src="js/funcoes.js"></script>
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="validarSessao()">
+    <div class="container-login">
+        <div class="img-box">
+            <div class="imgLogin"></div>
+        </div>
+        <a class="sair" href="index.html"><i class="fa-solid fa-person-walking-arrow-right"></i></a>
+        <div class="content-box">
+            <div class="form-box">
+                <h2>Login</h2>
+                <form>
+                    <div class="input-box">
+                        <span>Email</span>
+                        <input type="email" placeholder="@mail.com" id="email_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Senha</span>
+                        <input type="password" placeholder="*****" id="senha_input">
+                    </div>
+                    <div class="input-box">
+                        <input class="btnEntrar" value="Entrar" onclick="entrar()">
+                    </div>
+                    <div class="remember">
+                        <p>Não tem uma conta? <a href="cadastro.html">Inscrever-se</a></p>
+                    </div>
+                    <div class="remember">
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+
+    function entrar() {
+        // aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (emailVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
+           alert("Preencha todos os campos para prosseguir!");
+            // finalizarAguardar();
+            return false;
+        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            // cardErro.style.display = "block"
+            alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            // finalizarAguardar();
+            return false;
+        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idMembro;
+                    sessionStorage.DATA_USUARIO = json.data;
+                    sessionStorage.CARGO_USUARIO = json.cargo;
+
+                    setTimeout(function () {
+                    window.location = "dashboard/index.html";
+                    },500); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                alert("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

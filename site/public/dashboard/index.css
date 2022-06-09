@@ -1,0 +1,72 @@
+.conteiner{
+    height: 100vh;
+}
+.right{
+    height: 100vh;
+    margin-left: 338px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carteira{
+    height: 250px;
+    width: 500px;
+    background-color: #94d40b;
+    border: 2px solid #608908;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+    border-radius: 25px;
+    display: flex;
+}
+
+.logo{
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.cardLeft{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 250px;
+    width: 150px;
+    border-radius: 25px 0 0 25px;
+}
+
+.dados{
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.card{
+    display: flex;
+}
+
+.cardSpan{
+    font-weight: 400;
+}
+
+.cardPerfil{
+    margin-left: 29px;
+    margin-top: 15px;
+    height: 110px;
+    width: 100px;
+}
+
+.imgCard{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textoCard{
+    margin-top: 15px;
+    margin-right: 100px;
+    width: 100px;
+}
+
+.aovcCard{
+    height: 45px;
+}

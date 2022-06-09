@@ -1,0 +1,49 @@
+footer {
+    display: flex;
+    background-color: #94D40B;
+    height: 262px;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+footer .div_seta{
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+footer .div_seta .seta {
+    transform: rotate(-45deg);
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    height: 40px;
+    width: 40px;
+}
+
+footer .div_seta .a_seta{
+    height: 60px;
+    width: 60px;
+}
+
+footer .div_seta {
+    padding-bottom: 20px;
+}
+
+footer .div_seta .img_seta{
+    height: 60px;
+    width: 60px;
+}
+
+footer .redes{
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+}
+
+footer .redes_logo{
+    height: 50px;
+    width: 50px;
+}
+

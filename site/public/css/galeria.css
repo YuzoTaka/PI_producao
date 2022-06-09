@@ -1,0 +1,74 @@
+html{
+    overflow-x: hidden;
+}
+
+.bannerGaleria{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 220vh;
+    /* border: 2px solid black; */
+}
+
+.bannerGaleria .titulo{
+    padding-top: 100px;
+    color: #94D40B;
+    font-weight: bold;
+    font-size: 35px;
+    padding-bottom: 50px;   
+}
+
+.containerTitulo{
+    display: flex;
+    justify-content: center;
+}
+
+.bannerGaleria .texto{
+    padding-top: 40px;
+    width: 600px;
+}
+
+.imgs{
+    display: flex;
+    flex-direction: column;
+}
+
+.imagens{
+    width: 600px;
+    border-radius: 25px;
+}
+
+.imgCima{
+    display: flex;
+    justify-content: space-around;
+}
+
+.imagensMae{
+    height: 300px;
+    width: 550px;
+    align-items: flex-start;
+    border-radius: 25px;
+    /* margin-right: 150px; */
+}
+
+
+.imagensFJ{
+    height: 300px;
+    width: 450px;
+    align-items: flex-start;
+    border-radius: 25px;
+    /* margin-right: 150px; */
+}
+
+.imgLegenda{
+    margin-left: 30px;
+    color: gray;
+}
+
+.carna19{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    margin-left: 40px;
+}

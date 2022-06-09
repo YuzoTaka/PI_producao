@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+.banner .container{
+    background-image: url(../assets/img/Img.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: 160vh;
+    margin-right: 100px;
+}
+
+.fig_text{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 23px;
+    height: 153px;
+    width: 273px;
+    color: white;
+    font-family: 'Inter';
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fig{
+    display: flex;
+    padding-top: 4rem;
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 250px;
+}
+
+.fig_text .fig1{
+    height: 45px;
+    width: 199px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.fig_text .fig2{
+    height: 45px;
+    width: 199px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.fundLogo{
+    height: 100px;
+}
+
+.cardItem{
+    display: flex;
+    justify-content: space-around;
+    /* margin-left: 10px; */
+}
+
+.cardFund{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardValor{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* width: 90px; */
+}
+
+.cardMis{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.textSpan{
+    display: flex;
+    width: 150px;
+    text-align: center;
+}

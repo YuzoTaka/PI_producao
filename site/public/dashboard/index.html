@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/funcoes.js"></script>
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="inicio.css">
+  <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+  <title>Seinen Carrão | Início</title>
+</head>
+
+<body onload="validarSessao(), obterdados(), obterDadosGrafico()">
+  <main class="main">
+    <aside class="sidebar">
+      <nav class="nav">
+        <ul>
+          <li class="active"><a href="#">Início</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="mural.html">Mural de aviso</a></li>
+          <li><a href="../login.html">Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </main>
+  <div class="container">
+    <div class="cards">
+      <div class="card">
+        <h1>Quantidade de membros:</h1>
+        <p id="pessoasMem">0</p>
+      </div>
+      <div class="card">
+        <h1>Quantidade na diretoria:</h1>
+        <p id="pessoasDir">0</p>
+      </div>
+    </div>
+
+
+    <div class="graph">
+      <canvas id="canvas_grafico"></canvas>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  function obterdados(idAquario) {
+    fetch(`/medidas/tempo-real/${idAquario}`)
+      .then(resposta => {
+        
+        if (resposta.ok) {
+          resposta.json().then(resposta => {
+
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            
+            for (let i = 0; i < resposta.length; i++) {
+              var item = resposta[i];
+              if (item.cargo == 'Diretoria') {
+                pessoasDir.innerHTML = item.qtdMembro;
+              } else {
+                pessoasMem.innerHTML = item.qtdMembro
+              }
+            }
+          });
+        } else {
+
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+      });
+  }
+
+</script>
+
+<script>
+  // window.onload = obterDadosGrafico(1);
+
+  function obterDadosGrafico(idAquario) {
+    // alterarTitulo(idAquario)
+
+    // if (proximaAtualizacao != undefined) {
+    //     clearTimeout(proximaAtualizacao);
+    // }
+
+    fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGrafico(resposta, idAquario);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+  }
+
+
+
+
+  function plotarGrafico(resposta, idAquario) {
+    console.log('iniciando plotagem do gráfico...');
+
+    var dados = {
+      labels: [],
+      datasets: [
+        {
+          // yAxisID: 'y-umidade',
+          label: 'Qtd pessoas',
+          borderColor: '#6e9d0b',
+          backgroundColor: '#94D40B',
+          fill: true,
+          data: []
+        }
+        // ,
+        // {
+        //     yAxisID: 'y-temperatura',
+        //     label: 'Temperatura',
+        //     borderColor: '#FFF',
+        //     backgroundColor: '#32b9cd8f',
+        //     fill: true,
+        //     data: []
+        // }
+      ]
+    };
+
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      dados.labels.push(registro.nomeEvento); //EIXO X DO GRAFICO
+      dados.datasets[0].data.push(registro.QtdPessoas); //EIXO Y DO GRAFICO
+      // dados.datasets[1].data.push(registro.temperatura);
+    }
+
+    console.log(JSON.stringify(dados));
+
+    var ctx = canvas_grafico.getContext('2d');
+    window.grafico_linha = new Chart(ctx, {
+      type: 'bar',
+      data: dados,
+      options: {
+        scales: {
+          yAxes: [{
+            // type: 'linear',
+            // display: true,
+            // position: 'left',
+            // id: 'y-temperatura',
+            ticks: {
+              beginAtZero: true,
+              max: 10,
+              min: 0
+            }
+          }],
+        }
+      }
+    });
+
+    // setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+  }
+
+</script>

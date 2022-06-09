@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/funcoes.js"></script>
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="eventos.css">
+  <title>Seinen Carrão | Eventos</title>
+</head>
+
+<body onload="validarSessao(), atualizarEvento()">
+  <main class="main">
+    <aside class="sidebar">
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li class="active"><a href="#">Eventos</a></li>
+          <li><a href="mural.html">Mural de aviso</a></li>
+          <li><a href="../login.html">Sair</a></li>
+        </ul>
+      </nav>
+  </main>
+  <div class="container">
+    <div class="left">
+      <div class="inputEvento">
+        <h2>Criar um evento</h2>
+        <div class="nomeInput">
+          Nome: <input type="text" id="nomeEvento"><br>
+        </div>
+        <div class="nomeInput">
+          Data: <input type="date" id="dataEvento"><br>
+        </div>
+        <div class="nomeInput">
+          Local: <input type="text" id="localEvento"><br>
+        </div>
+        <div class="nomeInput">
+          Descrição: <input type="text" id="descEvento">
+        </div>
+        <div class="nomeInput">
+          <button onclick="criar()">Criar</button>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="inputEvento">
+        <h2>Entrar na comissão</h2>
+        <div class="nomeInput">
+          <div class="div-results">
+            <div id="feed_container" class="feed-container">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  function criar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeEventoVar = nomeEvento.value;
+    var dataEventoVar = dataEvento.value;
+    var localEventoVar = localEvento.value;
+    var descEventoVar = descEvento.value;
+
+    if (nomeEventoVar == "" || dataEventoVar == "" || localEventoVar == "" || descEventoVar == "") {
+      // cardErro.style.display = "block"
+      alert("Preencha todos os campos para prosseguir!");
+      // finalizarAguardar();
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/criar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeEventoServer: nomeEventoVar,
+        dataEventoServer: dataEventoVar,
+        localEventoServer: localEventoVar,
+        descEventoServer: descEventoVar
+
+      })
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        // cardErro.style.display = "block"
+        alert("Evento criado com sucesso!");
+        location.reload()
+        // limparFormulario();
+        // finalizarAguardar();
+      } else {
+        alert("Houve um erro ao tentar criar um evento!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      // finalizarAguardar();
+    });
+
+    return false;
+  }
+</script>
+
+<script>
+  function atualizarEvento() {
+    //aguardar();
+    fetch("/avisos/listarEvento").then(function (resposta) {
+      if (resposta.ok) {
+        if (resposta.status == 204) {
+          var feed = document.getElementById("feed_container");
+          var mensagem = document.createElement("div");
+          mensagem.innerHTML = "Nenhum evento criado."
+          feed.appendChild(mensagem);
+
+          throw "Nenhum resultado encontrado!!";
+        }
+
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+          var feed = document.getElementById("feed_container");
+          var divEvento = document.createElement("div");
+          var selEvento = document.createElement("select");
+          var iptEvento = document.createElement("input");
+          var areaEvento = document.createElement("div");
+          var btnEvento = document.createElement("button");
+          var optEvento = document.createElement("option");
+          optEvento.setAttribute("value", ``);
+          optEvento.innerHTML = `--Selecione--`;
+          selEvento.appendChild(optEvento);
+          feed.innerHTML = "";
+          divEvento.innerHTML = "<br>Selecione um evento: "
+          feed.appendChild(divEvento);
+          
+          for (let i = 0; i < resposta.length; i++) {
+            var publicacao = resposta[i];
+            var optEvento = document.createElement("option");
+            optEvento.innerHTML = publicacao.nomeEvento;
+            optEvento.setAttribute("value", `${publicacao.idEvento}`);
+            selEvento.appendChild(optEvento);
+            feed.appendChild(selEvento);
+          }
+
+          areaEvento.innerHTML = "<br>Area: "
+          feed.appendChild(areaEvento);
+          feed.appendChild(iptEvento);
+          feed.appendChild(btnEvento);
+          btnEvento.innerHTML = "Entrar";
+          btnEvento.setAttribute("onclick", `comissao()`);
+          selEvento.id = "selEvento";
+          iptEvento.id = "iptEvento";
+
+          // finalizarAguardar();
+        });
+      } else {
+        throw ('Houve um erro na API!');
+      }
+    }).catch(function (resposta) {
+      console.error(resposta);
+      // finalizarAguardar();
+    });
+  }
+</script>
+
+<script>
+  function comissao(){
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idVar = sessionStorage.ID_USUARIO;
+    var selEventoVar = selEvento.value;
+    var iptEventoVar = iptEvento.value;
+
+    if (selEventoVar == "" || iptEventoVar == "") {
+      // cardErro.style.display = "block"
+      alert("Preencha todos os campos para prosseguir!");
+      // finalizarAguardar();
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/comissao", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        idServer: idVar,
+        selEventoServer: selEventoVar,
+        iptEventoServer: iptEventoVar,
+      })
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        // cardErro.style.display = "block"
+        alert("Entrada realizada com sucesso!");
+        location.reload()
+        // limparFormulario();
+        // finalizarAguardar();
+      } else {
+        alert("Houve um erro ao tentar entrar na comissão!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      // finalizarAguardar();
+    });
+
+    return false;
+  }
+</script>

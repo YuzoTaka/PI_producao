@@ -1,0 +1,232 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    position: fixed;
+    align-items: center;
+    background-color: white;
+    height: 4rem;
+    width: 100vw;
+    justify-content: space-around;
+    border-bottom: 3px solid black;
+    color: #94D40B;
+    font-weight: 400;
+    font-size: 20px;
+}
+.logo{
+    margin-left: 50px;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    padding-left: 300px;
+    width: 500px;
+    margin-right: 10px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #94D40B;
+}
+
+.header a li {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+
+.navbar .sub-menu{
+    display: none;
+    color: black;
+}
+
+.navbar .sub-menu:hover{
+    display: block;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding-left: 7px;
+  }
+
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  border-radius: 10px;
+  z-index: 1;
+}
+.dropdown-content a{
+    display: inline-block;
+    margin-top: 2px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+.navbar .inicioH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    margin-left: 10px;
+    width: 50px;
+}
+.navbar .inicioH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .inicioH:after{  
+    transform-origin:  0% 50%; 
+}
+
+.navbar .sobreH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    margin-left: 10px;
+    width: 55px;
+}
+.navbar .sobreH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .sobreH:after{  
+    transform-origin:  0% 50%; 
+}
+.navbar .atividadesH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    width: 100px;
+}
+.navbar .atividadesH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .atividadesH:after{  
+    transform-origin:  0% 50%; 
+}
+
+.navbar .undokaiH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    width: 80px;
+}
+
+.navbar .undokaiH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .undokaiH:after{  
+    transform-origin:  0% 50%; 
+}
+.navbar .carnaH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    width: 120px;
+}
+.navbar .carnaH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .carnaH:after{  
+    transform-origin:  0% 50%; 
+}
+.navbar .tomodachiH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    width: 100px;
+}
+.navbar .tomodachiH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .tomodachiH:after{  
+    transform-origin:  0% 50%; 
+}
+.navbar .galeriaH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    margin-left: 10px;
+    width: 68px;
+}
+.navbar .galeriaH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .galeriaH:after{  
+    transform-origin:  0% 50%; 
+}
+.navbar .loginH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    margin-left: 10px;
+    width: 50px;
+}
+.navbar .loginH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .loginH:after{  
+    transform-origin:  0% 50%; 
+}
+.navbar .cadastroH:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #94D40B;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    margin-left: 10px;
+    width: 85px;
+}
+.navbar .cadastroH:hover:after{
+    transform: scaleX(1); 
+}
+
+.navbar .cadastroH:after{  
+    transform-origin:  0% 50%; 
+}
+
+   

@@ -1,0 +1,91 @@
+.banner_evento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 180vh;
+}
+
+.banner_evento .eventos{
+    padding-top: 100px;
+    color: #94D40B;
+    font-weight: bold;
+    font-size: 35px;
+    padding-bottom: 50px;
+}
+
+.banner_evento .texto{
+    padding-top: 40px;
+    width: 600px;
+}
+
+.img_maes{
+    height: 350px;
+    width: 600px;
+    color: #696969;
+}
+
+.banner_evento .eventos_gerais{
+    padding-top: 100px;
+    color: #94D40B;
+    font-weight: bold;
+    font-size: 35px;
+    padding-bottom: 50px;
+}
+
+
+.card_undokai{
+    display: flex;
+    height: 92px;
+    width: 550px;
+    background-image: url(../assets/img/image\ 1.svg);
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    align-items: center;
+    padding-left: 60px;
+    font-weight: 900;
+    font-size: 35px;
+    color: white;
+    justify-content: space-between;
+}
+
+.card_carna{
+    display: flex;
+    height: 92px;
+    width: 550px;
+    background-image: url(../assets/img/carna2\ 1.svg);
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    align-items: center;
+    padding-left: 60px;
+    font-weight: 900;
+    font-size: 35px;
+    color: white;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.card_tomodachi{
+    display: flex;
+    height: 92px;
+    width: 550px;
+    background-image: url(../assets/img/tomodachi\ 1.svg);
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    align-items: center;
+    padding-left: 60px;
+    font-weight: 900;
+    font-size: 35px;
+    color: white;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.saiba{
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 6px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-right: 40px;
+}
