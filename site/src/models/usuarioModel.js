@@ -37,7 +37,7 @@ function criar(nomeEvento,localEvento,dataEvento,descEvento) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO evento (nomeEvento, dt, local, descricao) VALUES ('${nomeEvento}', '${dataEvento}','${localEvento}', '${descEvento}');
+        INSERT INTO evento (nomeEvento, dt, localEvento, descricao) VALUES ('${nomeEvento}', '${dataEvento}','${localEvento}', '${descEvento}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
